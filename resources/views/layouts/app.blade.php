@@ -37,11 +37,14 @@
                     <ul class="navbar-nav me-auto">
                         @guest
                         @else
+                        @if(Auth::user()->isAdmin == 1)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('product.index') }}">
                                 Product
                             </a>
                         </li>
+                        @else
+                        @endif
                         @endguest
                     </ul>
 

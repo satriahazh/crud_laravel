@@ -18,4 +18,7 @@ Route::get('/about', function () {
     return view('about', $data);
 });
 
-Route::resource('/product', ProductController::class);
+Route::group(['middleware' => 'admin'], function () {
+    Route::resource('/product', ProductController::class)->middleware('admin');
+    Route::get('/admin-dashboard', 'AdminController@index');
+});
